@@ -1,9 +1,0 @@
-class Solution {
-    public int maxSubArray(int[] nums) {
-        int maxSoFar = 0, maxEndingHere = 0;
-        for(int i: nums) {
-            maxEndingHere = Math.max(maxEndinghere + i, i);
-            maxSoFar = Math.max(maxSoFar, maxEndingHere);
-        }
-    }
-}

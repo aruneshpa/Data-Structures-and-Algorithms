@@ -1,4 +1,4 @@
-#include<iostream>
+#include<iostrea>
 using namespace std;
 
 unsigned int reverse_bits(unsigned int n) {
