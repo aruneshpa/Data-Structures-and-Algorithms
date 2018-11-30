@@ -41,4 +41,44 @@ class Solution {
 
       return true;
    }
+
+   /*
+    * Using Union Find algorithm.
+    */
+   
+   public int find(int x, int []parent) {
+      if (parent[x] == x) return x;
+      return parent[x] = find(parent[x]);
+   }
+   
+   public boolean union(int s, int d, int []parent, int []rank) {
+      int xr = find(s, parent);
+      int yr = find(d, parent);
+      if (xr == yr) return false;
+
+      if (rank[xr] < rank[yr]) {
+         parent[xr] = yr;
+      } else if (rank[xr] > rank[yr]) {
+         parent[yr] = xr;
+      } else {
+         rank[yr]++;
+         parent[xr] = yr;
+   }
+   
+      public boolean canFinish(int n, int[][] prerequisites) {
+      int []parent = new int[n];
+      int []rank = new int[n];
+      Arrays.fill(rank, 0);
+      for (int i = 0; i < n; i++) parent[i] = i;
+
+      for (int []e: prerequisites) {
+         int s = e[0], d = e[1];
+         if (!union(s, d, parent, rank)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
 }
